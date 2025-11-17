@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: literate-technology-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3132:3000"  # Production port from CaddyControl
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    restart: unless-stopped
+    volumes:
+      - ./content:/app/content:ro  # Mount content directory read-only for updates
+    networks:
+      - literate-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  literate-network:
+    driver: bridge
