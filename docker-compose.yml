@@ -14,7 +14,7 @@ services:
       - HOSTNAME=0.0.0.0
     restart: unless-stopped
     volumes:
-      - ./content:/app/content:ro  # Mount content directory read-only for updates
+      - ./book-content:/app/book-content:ro  # Mount book-content directory read-only for updates
     networks:
       - literate-network
     healthcheck:

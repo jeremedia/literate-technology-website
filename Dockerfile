@@ -23,8 +23,7 @@ RUN addgroup -g 1001 -S nodejs && \
 # Copy built application
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/content ./content
+COPY --from=builder --chown=nextjs:nodejs /app/book-content ./book-content
 
 # Set environment to production
 ENV NODE_ENV=production
