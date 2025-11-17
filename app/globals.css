@@ -79,6 +79,44 @@
     max-width: 65ch;
   }
 
+  /* List styles - ensure bullets and numbers are visible */
+  ul, ol {
+    @apply text-lg;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 65ch;
+    padding-left: 2rem; /* Space for bullets/numbers */
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem; /* Additional spacing after bullet/number */
+  }
+
+  /* Nested lists */
+  ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  ul ul {
+    list-style-type: circle;
+  }
+
+  ul ul ul {
+    list-style-type: square;
+  }
+
   /* Better spacing after paragraphs before headings */
   p + h2 {
     margin-top: 4rem;
