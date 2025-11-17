@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Editorial Futurism palette */
+    --electric-blue: #0EA5E9;
+    --terminal-green: #00FF41;
+    --amber-warning: #F59E0B;
+  }
+
+  /* Typography scale */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-black;
+    font-family: 'Literata', Georgia, serif;
+  }
+
+  /* Headings use display font */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl;
+    font-weight: 700;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h4 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  /* Code blocks */
+  code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    @apply text-sm bg-gray-100 px-1.5 py-0.5 rounded;
+  }
+
+  pre {
+    @apply bg-black text-white p-6 rounded-lg overflow-x-auto;
+  }
+
+  pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+
+  /* Reading optimizations */
+  p {
+    @apply text-lg leading-relaxed;
+    max-width: 65ch;
+  }
+
+  /* Links */
+  a {
+    @apply text-electric-blue hover:underline;
+    transition: all 0.2s ease;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-electric-blue text-white;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Button styles */
+  .btn-primary {
+    @apply bg-electric-blue text-white px-6 py-3 rounded-md font-medium hover:bg-sky-600 transition-all;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-black text-black px-6 py-3 rounded-md font-medium hover:bg-black hover:text-white transition-all;
+  }
+
+  /* Section container */
+  .section {
+    @apply py-20 md:py-32;
+  }
+
+  /* Reading container */
+  .reading-container {
+    @apply max-w-reading mx-auto px-6;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    @apply text-3xl md:text-4xl font-display font-semibold leading-tight my-12 pl-8 border-l-4 border-electric-blue;
+  }
+
+  /* Terminal style */
+  .terminal {
+    @apply bg-black text-terminal-green font-mono p-6 rounded-lg;
+  }
+}
+
+@layer utilities {
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-600;
+  }
+
+  /* Animation utilities */
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Typewriter effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
+}
